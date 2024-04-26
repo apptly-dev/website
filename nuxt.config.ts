@@ -8,6 +8,7 @@ const autoFix = !isProduction
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: 'src',
+  telemetry: true,
   devtools: { enabled: !isProduction },
 
   extends: ['@nuxt/ui-pro'],

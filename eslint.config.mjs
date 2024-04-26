@@ -1,3 +1,5 @@
+import a11yPlugin from 'eslint-plugin-vue-a11y';
+
 // @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs';
 
@@ -12,4 +14,6 @@ export default withNuxt({
     '@stylistic/quotes': ['error', 'single'],
     '@stylistic/semi': ['error', 'always'],
   },
+}, {
+  ...a11yPlugin.configs['flat/recommended'],
 });

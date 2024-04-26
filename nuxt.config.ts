@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/content',
     '@nuxt/ui',
+    'nitro-cloudflare-dev',
   ],
 
   eslint: {
@@ -26,5 +27,9 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
+  },
+
+  nitro: {
+    preset: 'cloudflare-pages',
   },
 });

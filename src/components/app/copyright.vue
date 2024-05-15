@@ -34,6 +34,6 @@ const years = computed(() => {
 const copyrightText = computed(() => `Copyright © ${years.value}`);
 
 const beforeLinkText = computed(() => pShort.value ? '' : copyrightText.value);
-const linkText = computed(() => pShort.value ? copyrightText.value : 'JPI Technologies Ltd');
+const linkText = computed(() => pShort.value ? copyrightText.value : 'Apptly Software Ltd');
 const afterLinkText = computed(() => pShort.value ? '' : '.');
 </script>

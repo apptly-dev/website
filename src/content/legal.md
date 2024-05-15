@@ -1,3 +1,3 @@
 # Legal
 
-_Apptly_ is a trademark by _JPI Technologies Ltd_ registered in England (11239667).
+_Apptly_ is a trademark of _Apptly Software Ltd_, registered in England and Wales (98843396).

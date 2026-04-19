@@ -10,6 +10,7 @@
     "dev:prepare": "nuxt prepare",
     "generate": "nuxt generate",
     "lint": "eslint --fix",
+    "lint:check": "eslint .",
     "prepare": "nuxt prepare",
     "preview": "pnpm run build && wrangler pages dev ./dist"
   },

@@ -6,7 +6,7 @@
     "build": "nuxt build",
     "clean": "rimraf dist node_modules .nuxt",
     "deploy": "pnpm run build && wrangler pages deploy ./dist",
-    "dev": "nuxt dev",
+    "dev": "nuxt cleanup && nuxt dev",
     "dev:prepare": "nuxt prepare",
     "generate": "nuxt generate",
     "lint": "eslint --fix",

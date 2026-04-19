@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: !isProduction },
   srcDir: 'src',
+  serverDir: 'src/server',
 
   nitro: {
     preset: 'cloudflare-pages',

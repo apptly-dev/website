@@ -1,5 +1,6 @@
 name = "apptly-website"
 compatibility_date = "2024-02-08"
+pages_build_output_dir = "dist"
 
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Note: Use secrets to store sensitive data.

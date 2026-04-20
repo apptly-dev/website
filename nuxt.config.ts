@@ -1,15 +1,12 @@
 // isProduction = false
 const isProduction = process.env.PRODUCTION === 'production';
 // autoFix = true
-const autoFix = !isProduction
-  && process.env.VITE_AUTO_FIX !== 'false'
-  && process.env.VITE_AUTO_FIX !== 'no';
+const autoFix = !isProduction &&
+  process.env.VITE_AUTO_FIX !== 'false' &&
+  process.env.VITE_AUTO_FIX !== 'no';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  srcDir: 'src',
-  telemetry: true,
-  devtools: { enabled: !isProduction },
 
   extends: ['@nuxt/ui-pro'],
 
@@ -19,6 +16,14 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nitro-cloudflare-dev',
   ],
+  devtools: { enabled: !isProduction },
+  srcDir: 'src',
+  serverDir: 'src/server',
+
+  nitro: {
+    preset: 'cloudflare-pages',
+  },
+  telemetry: true,
 
   eslint: {
     checker: {
@@ -28,9 +33,5 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
-  },
-
-  nitro: {
-    preset: 'cloudflare-pages',
   },
 });

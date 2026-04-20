@@ -1,0 +1,33 @@
+name: Build
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches-ignore:
+      - '**-wip'
+  pull_request:
+
+jobs:
+  build:
+    # Pull requests from the same repository won't trigger as they were
+    # already triggered by the push
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install
+
+      - run: pnpm lint:check
+
+      - run: pnpm build

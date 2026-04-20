@@ -14,14 +14,22 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/content',
     '@nuxt/ui',
-    'nitro-cloudflare-dev',
   ],
   devtools: { enabled: !isProduction },
   srcDir: 'src',
   serverDir: 'src/server',
 
+  compatibilityDate: '2026-04-20',
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: 'cloudflare-module',
+    prerender: {
+      routes: [
+        '/',
+        '/.well-known/matrix/server',
+        '/.well-known/matrix/client',
+      ],
+      crawlLinks: true,
+    },
   },
   telemetry: true,
 

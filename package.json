@@ -12,7 +12,8 @@
     "lint": "eslint . --fix",
     "lint:check": "eslint .",
     "precommit": "run-s generate lint",
-    "prepare": "nuxt prepare"
+    "prepare": "nuxt prepare",
+    "preview": "wrangler dev"
   },
   "dependencies": {
     "nuxt": "^3.21.2",

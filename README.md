@@ -1,78 +1,87 @@
-# Nuxt 3 Minimal Starter
+# apptly-website
 
-Look at the [Nuxt 3 documentation] to learn more.
+Source code for [apptly.co][apptly]. Apptly Software's
+open-source projects are indexed at
+[awesome-apptly.com][awesome-apptly].
+
+## Stack
+
+- [Nuxt 3][nuxt] + Vue 3
+- [`@nuxt/ui`][nuxt-ui] + [`@nuxt/ui-pro`][nuxt-ui-pro]
+  for components and styling
+- [`@nuxt/content`][nuxt-content] v2 for Markdown-based
+  content
+- [`@nuxt/icon`][nuxt-icon] with Heroicons
+- [Cloudflare Workers][cf-workers] hosting via the Nitro
+  `cloudflare-module` preset
 
 ## Setup
 
-Make sure to install the dependencies:
+Requires **Node ≥ 22** and **pnpm ≥ 10.33**.
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Development
 
-Start the development server on `http://localhost:3000`:
+Start the dev server on <http://localhost:3000>:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm dev
 ```
 
-## Production
+Other useful scripts:
 
-Build the application for production:
+- `pnpm build` — production build to `.output/` — Cloudflare
+  Worker bundle plus prerendered static assets in
+  `.output/public/` (routes from `nuxt.config.ts`)
+- `pnpm generate` — full static site generation
+- `pnpm lint` / `pnpm lint:check` — ESLint with / without
+  `--fix`
+- `pnpm check` — `generate` + `lint:check`
+- `pnpm clean` — wipe `.output`, `.nuxt`, `node_modules`
 
-```bash
-# npm
-npm run build
+## Source layout
 
-# pnpm
-pnpm run build
+- `src/pages/` — routed pages
+- `src/layouts/` — layouts
+- `src/components/app/` — site-specific components
+- `src/content/` — Markdown content rendered via
+  `<ContentDoc>`
+- `src/server/routes/` — Nitro server routes
+- `src/public/` — static assets copied as-is to
+  `.output/public/` (favicon, well-known files)
 
-# yarn
-yarn build
+## Deployment
 
-# bun
-bun run build
-```
+Cloudflare Workers Builds runs `pnpm build` (configured in
+the `[build]` section of `wrangler.toml`) on every push and
+deploys the resulting bundle. `wrangler.toml` also:
 
-Locally preview production build:
+- pins `compatibility_date` and `nodejs_compat`
+- enables `workers_dev` — the production Worker is
+  reachable at `<name>.<subdomain>.workers.dev` for smoke
+  tests
+- enables `preview_urls` — every deployment gets a unique
+  preview subdomain
 
-```bash
-# npm
-npm run preview
+apptly.co continues to resolve to the legacy Pages project
+during the transition; the Workers deploy lives at
+`apptly-website.apptly.workers.dev`.
 
-# pnpm
-pnpm run preview
+## Agent notes
 
-# yarn
-yarn preview
+See [AGENTS.md][agents] for operational notes aimed at
+agents working in this repo (MCP setup, files never to
+commit).
 
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation] for more information.
-
-[Nuxt 3 documentation]: https://nuxt.com/docs/getting-started/introduction
-[deployment documentation]: https://nuxt.com/docs/getting-started/deployment
+[apptly]: https://apptly.co
+[awesome-apptly]: https://awesome-apptly.com
+[nuxt]: https://nuxt.com
+[nuxt-ui]: https://ui.nuxt.com
+[nuxt-ui-pro]: https://ui.nuxt.com/pro
+[nuxt-content]: https://content.nuxt.com
+[nuxt-icon]: https://github.com/nuxt/icon
+[cf-workers]: https://developers.cloudflare.com/workers/
+[agents]: ./AGENTS.md

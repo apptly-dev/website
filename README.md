@@ -36,6 +36,10 @@ Other useful scripts:
 - `pnpm build` — production build to `.output/` — Cloudflare
   Worker bundle plus prerendered static assets in
   `.output/public/` (routes from `nuxt.config.ts`)
+- `pnpm preview` — local Cloudflare Workers preview via
+  `wrangler dev` using settings from `wrangler.toml`
+  (runs the `[build] command` and serves the `.output/`
+  bundle)
 - `pnpm generate` — full static site generation
 - `pnpm lint` / `pnpm lint:check` — ESLint with / without
   `--fix`

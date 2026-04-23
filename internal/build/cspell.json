@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "language": "en-GB",
+  "ignorePaths": [
+    "**/.nuxt/**",
+    "**/.output/**",
+    "**/.wrangler/**",
+    "**/node_modules/**",
+    "**/pnpm-lock.yaml"
+  ],
+  "words": [
+    "amery",
+    "apptly",
+    "iconify",
+    "nuxt",
+    "nuxtjs",
+    "poupe",
+    "unrs",
+    "workerd"
+  ]
+}

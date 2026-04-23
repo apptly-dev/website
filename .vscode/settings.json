@@ -1,6 +1,5 @@
 {
-  "cSpell.words": [
-    "apptly",
-    "Nuxt"
+  "cSpell.import": [
+    "internal/build/cspell.json"
   ]
 }

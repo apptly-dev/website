@@ -42,6 +42,45 @@ entirely — neither touches the repo-root `.cache/`.
   state.
 - `.cache/` — includes the Chromium MCP user-data-dir.
 
+## Linting
+
+`pnpm lint` runs `eslint . --fix` followed by `cspell`.
+`pnpm lint:check` runs the non-fixing eslint plus `cspell`.
+`run-s` is sequential, so cspell only executes after eslint
+passes — a parse error will hide spelling issues until
+eslint is clean.
+
+The shared cspell config lives at `internal/build/cspell.json`:
+
+- `language: "en-GB"` — British English only; US-only
+  spellings will be flagged.
+- `ignorePaths` covers `node_modules`, `pnpm-lock.yaml`,
+  and Nuxt/Wrangler build outputs. Other directories are
+  skipped via `.gitignore` (cspell respects it by default).
+- `words` holds terms used across multiple files or in
+  JSON files (which can't carry inline comments).
+
+`.vscode/settings.json` imports the same config via
+`cSpell.import`, so editor and CLI share one source of
+truth.
+
+### Adding new words
+
+- **Used in multiple files, or embedded in JSON**: add to
+  `words` in `internal/build/cspell.json`. Use lowercase —
+  cspell accepts any case when the dictionary entry is
+  lowercase; an uppercase entry forces exact-case matching.
+- **Used in a single file that supports comments**:
+  annotate the file directly rather than polluting the
+  shared dictionary. Comment syntax varies by file type:
+  - Markdown: `<!-- cspell:words foo bar -->`
+  - JS/TS: `// cspell:words foo bar`
+  - Hash-comment (shell, `_headers`, etc.):
+    `# cspell:words foo bar`
+- **Real British-English fix**: when a flagged term is
+  actually a US spelling (e.g. `color` → `colour`), fix
+  the source rather than add the word.
+
 ## Branch workflow
 
 - `main` is the default and deploy target.

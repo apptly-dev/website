@@ -1,3 +1,5 @@
+# cspell:words nosniff
+
 # Matrix well-known discovery
 # https://spec.matrix.org/v1.13/client-server-api/#getwell-knownmatrixclient
 # https://spec.matrix.org/v1.13/server-server-api/#getwell-knownmatrixserver

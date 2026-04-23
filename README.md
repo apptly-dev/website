@@ -34,7 +34,7 @@ pnpm dev
 Other useful scripts:
 
 - `pnpm build` — production build to `.output/` — Cloudflare
-  Worker bundle plus prerendered static assets in
+  Worker bundle plus pre-rendered static assets in
   `.output/public/` (routes from `nuxt.config.ts`)
 - `pnpm preview` — local Cloudflare Workers preview via
   `wrangler dev` using settings from `wrangler.toml`

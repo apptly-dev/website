@@ -1,0 +1,14 @@
+{
+  "contacts": [
+    {
+      "email_address": "admin@apptly.co",
+      "matrix_id": "@admin:apptly.co",
+      "role": "m.role.admin"
+    },
+    {
+      "email_address": "security@apptly.co",
+      "role": "m.role.security"
+    }
+  ],
+  "support_page": "https://apptly.co/support"
+}

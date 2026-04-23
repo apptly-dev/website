@@ -1,5 +1,7 @@
 # AGENTS.md
 
+<!-- cspell:words tmpfs -->
+
 Operational notes for agents. See [README.md][readme] for
 project overview, stack, and dev commands.
 
@@ -9,14 +11,69 @@ project overview, stack, and dev commands.
 configuration stays in sync across contributors.
 
 - **`chrome-devtools`** (stdio, `chrome-devtools-mcp@latest`)
-  — expects a headless Chromium reachable at
-  `http://127.0.0.1:9236`. Port is project-local:
+  — expects a Chrome/Chromium DevTools endpoint reachable
+  at `http://127.0.0.1:9236`. Port is project-local:
   sibling repos use 9234 (`awesome-apptly`) and 9235
   (`poupe-ui/poupe`).
 
-Start Chromium before using `mcp__chrome-devtools__*`
-tools. A persistent `--user-data-dir` is required — without
-it the MCP server loses session state between calls:
+Start a browser on that port before using
+`mcp__chrome-devtools__*` tools. Two workflows, depending
+on who is driving:
+
+### Shared browser via SSH (pair-driving)
+
+Use `./ssh-chrome.sh` when the human drives the browser
+(logs in, navigates, fills forms) while Claude observes
+the live DOM, console, and network activity via the MCP.
+The script opens a **visible** Chrome on the host's
+`DISPLAY=:0` and tunnels the DevTools port back through
+SSH, so both sides see the same session.
+
+```bash
+# defaults: port 9236, host 172.17.0.1, google-chrome
+./ssh-chrome.sh
+
+# override host and browser (port is positional)
+./ssh-chrome.sh 9236 other-host chromium
+```
+
+Ctrl-C in the terminal running the script tears down both
+the tunnel and the remote browser.
+
+Prerequisites live on the host: `sshd` must accept
+connections from the Docker bridge (`docker0`), the host
+firewall must allow bridge → `:22`, and the remote login
+must populate `$XDG_RUNTIME_DIR` (any PAM/systemd session
+does). On Ubuntu:
+
+```bash
+sudo ufw allow in on docker0 to any port 22 proto tcp
+```
+
+The script uses `--user-data-dir=$XDG_RUNTIME_DIR/...` on
+the host — tmpfs, wiped on logout. That suits short
+interactive sessions; for long-running flows that need
+persistent cookies, point `--user-data-dir` somewhere
+durable.
+
+**Known race:** VS Code Remote's auto-forward can
+bind the host port before chrome does, so chrome
+falls back to IPv6 only. The script's `ssh -L`
+tunnel targets IPv4, so traffic never reaches
+chrome and the MCP hangs. This repo's
+`.vscode/settings.json` sets
+`remote.portsAttributes.9236.onAutoForward` to
+`ignore` to prevent the forward. If it hasn't
+taken effect, `curl http://127.0.0.1:9236/json/version`
+in the container connects but returns zero bytes;
+reload the VS Code window to clear it.
+
+### Headless Chromium (Claude-only)
+
+Use headless Chromium when no human interaction is
+required — scripted clicks, screenshot capture, and
+similar automation. A persistent `--user-data-dir` keeps
+MCP session state between calls:
 
 ```bash
 chromium --headless --no-sandbox --remote-debugging-port=9236 \

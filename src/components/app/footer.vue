@@ -1,7 +1,7 @@
 <template>
-  <u-footer>
+  <p-footer>
     <template #left>
       <app-copyright />
     </template>
-  </u-footer>
+  </p-footer>
 </template>

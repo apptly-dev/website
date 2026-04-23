@@ -5,6 +5,7 @@
     "**/.nuxt/**",
     "**/.output/**",
     "**/.wrangler/**",
+    "**/*.svg",
     "**/node_modules/**",
     "**/pnpm-lock.yaml"
   ],

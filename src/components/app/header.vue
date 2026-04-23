@@ -1,10 +1,10 @@
 <template>
-  <u-header>
+  <p-header>
     <template #logo>
       Apptly
     </template>
     <template #right>
-      <u-color-mode-toggle />
+      <p-color-mode-toggle />
     </template>
-  </u-header>
+  </p-header>
 </template>

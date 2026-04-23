@@ -142,7 +142,7 @@ truth.
 
 - `main` is the default and deploy target.
 - Feature work branches as `pr-<user>-<topic>` (e.g.
-  `pr-amery-workers`, `pr-amery-docs`).
+  `pr-amery-workers`, `pr-amery-nuxt4`).
 - PRs target `main`.
 
 ## Commit conventions

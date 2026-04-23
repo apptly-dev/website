@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "check": "run-s generate lint:check",
+    "check": "run-s lint:check type-check build",
     "clean": "rimraf .output .nuxt node_modules",
     "cspell": "cspell --config internal/build/cspell.json \"**\"",
     "dev": "nuxt cleanup && nuxt dev",
@@ -16,31 +16,37 @@
     "lint:check": "run-s lint:_check cspell",
     "precommit": "run-s generate lint",
     "prepare": "nuxt prepare",
-    "preview": "wrangler dev"
+    "preview": "wrangler dev",
+    "type-check": "nuxt typecheck"
   },
   "dependencies": {
-    "nuxt": "^3.21.2",
+    "nuxt": "^4.4.2",
     "vue": "^3.5.32",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260418.1",
-    "@iconify-json/heroicons": "^1.2.3",
-    "@nuxt/content": "^2.13.4",
+    "@nuxt/content": "^3.12.0",
     "@nuxt/eslint": "^1.15.2",
-    "@nuxt/ui": "^2.22.3",
-    "@nuxt/ui-pro": "^1.8.2",
+    "@nuxt/icon": "^2.2.1",
     "@poupe/eslint-config": "~0.9.1",
+    "@poupe/tailwindcss": "^0.5.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/node": "^22.0.0",
+    "better-sqlite3": "^12.6.2",
     "cspell": "^10.0.0",
     "eslint": "^9.39.4",
     "npm-run-all2": "^8.0.4",
     "rimraf": "^6.1.3",
-    "vite-plugin-eslint2": "^5.1.0",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.2.5",
     "wrangler": "^4.72.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
+      "better-sqlite3",
       "esbuild",
       "unrs-resolver",
       "vue-demi",

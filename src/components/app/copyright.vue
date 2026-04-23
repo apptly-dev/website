@@ -1,12 +1,12 @@
 <template>
   <span class="text-sm">
     {{ beforeLinkText }}
-    <u-link
+    <nuxt-link
       class="hover:text-primary hover:underline"
       to="/legal"
     >{{ linkText }}
       {{ afterLinkText }}
-    </u-link>
+    </nuxt-link>
   </span>
 </template>
 

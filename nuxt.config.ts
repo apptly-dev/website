@@ -1,3 +1,5 @@
+import tailwindcss from '@tailwindcss/vite';
+
 // isProduction = false
 const isProduction = process.env.PRODUCTION === 'production';
 // autoFix = true
@@ -7,15 +9,23 @@ const autoFix = !isProduction &&
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
-  extends: ['@nuxt/ui-pro'],
-
   modules: [
-    '@nuxt/eslint',
     '@nuxt/content',
-    '@nuxt/ui',
+    '@nuxt/eslint',
+    '@nuxt/icon',
+  ],
+  components: [
+    { path: '~/components/poupe', prefix: 'P', pathPrefix: false },
+    '~/components',
   ],
   devtools: { enabled: !isProduction },
+  css: ['~/assets/css/main.css'],
+  content: {
+    database: {
+      type: 'd1',
+      bindingName: 'DB',
+    },
+  },
   srcDir: 'src',
   serverDir: 'src/server',
 
@@ -27,7 +37,23 @@ export default defineNuxtConfig({
       crawlLinks: true,
     },
   },
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
   telemetry: true,
+  hooks: {
+    'vite:extendConfig'(config) {
+      // @nuxtjs/mdc pushes remark/rehype entries into optimizeDeps.include
+      // after config merges, but they're unresolvable (server-only deps).
+      const include = config.optimizeDeps?.include;
+      if (include) {
+        config.optimizeDeps!.include = include.filter(
+          (entry: string) => !entry.includes('@nuxtjs/mdc >'),
+        );
+      }
+    },
+  },
 
   eslint: {
     checker: {

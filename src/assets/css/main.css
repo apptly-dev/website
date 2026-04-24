@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@plugin '@poupe/tailwindcss' {
+  primary: #6750A4;
+  secondary: #958DA5;
+}

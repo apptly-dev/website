@@ -6,12 +6,14 @@ open-source projects are indexed at
 
 ## Stack
 
-- [Nuxt 3][nuxt] + Vue 3
-- [`@nuxt/ui`][nuxt-ui] + [`@nuxt/ui-pro`][nuxt-ui-pro]
-  for components and styling
-- [`@nuxt/content`][nuxt-content] v2 for Markdown-based
-  content
-- [`@nuxt/icon`][nuxt-icon] with Heroicons
+- [Nuxt 4][nuxt] + Vue 3
+- [Tailwind CSS 4][tailwind] via `@tailwindcss/vite`
+- [`@poupe/tailwindcss`][poupe-tailwindcss] for Material
+  Design 3 theming (CSS-first, wired from
+  `src/assets/css/main.css`)
+- [`@nuxt/content`][nuxt-content] v3 with a Cloudflare D1
+  binding
+- [`@nuxt/icon`][nuxt-icon] for icon components
 - [Cloudflare Workers][cf-workers] hosting via the Nitro
   `cloudflare-module` preset
 
@@ -34,28 +36,27 @@ pnpm dev
 Other useful scripts:
 
 - `pnpm build` — production build to `.output/` — Cloudflare
-  Worker bundle plus prerendered static assets in
+  Worker bundle plus pre-rendered static assets in
   `.output/public/` (routes from `nuxt.config.ts`)
-- `pnpm preview` — local Cloudflare Workers preview via
-  `wrangler dev` using settings from `wrangler.toml`
-  (runs the `[build] command` and serves the `.output/`
-  bundle)
-- `pnpm generate` — full static site generation
-- `pnpm lint` / `pnpm lint:check` — ESLint with / without
-  `--fix`
-- `pnpm check` — `generate` + `lint:check`
+- `pnpm lint` / `pnpm lint:check` — ESLint with / without `--fix`
+- `pnpm type-check` — type-check the project via
+  `nuxt typecheck` (vue-tsc)
+- `pnpm check` — `lint:check` + `type-check` + `build`
 - `pnpm clean` — wipe `.output`, `.nuxt`, `node_modules`
 
 ## Source layout
 
+- `src/assets/css/` — Tailwind entry + `@poupe/tailwindcss`
+  theme (`main.css`)
 - `src/pages/` — routed pages
 - `src/layouts/` — layouts
 - `src/components/app/` — site-specific components
+- `src/components/poupe/` — local MD3 components
+  (auto-imported as `<Poupe*>`); candidates for future
+  promotion into `@poupe/vue`
 - `src/content/` — Markdown content rendered via
-  `<ContentDoc>`
-- `src/server/routes/` — Nitro server routes
-- `src/public/` — static assets copied as-is to
-  `.output/public/` (favicon, well-known files)
+  `<ContentRenderer>`
+- `src/server/` — Nitro server routes
 
 ## Deployment
 
@@ -83,8 +84,8 @@ commit).
 [apptly]: https://apptly.co
 [awesome-apptly]: https://awesome-apptly.com
 [nuxt]: https://nuxt.com
-[nuxt-ui]: https://ui.nuxt.com
-[nuxt-ui-pro]: https://ui.nuxt.com/pro
+[tailwind]: https://tailwindcss.com
+[poupe-tailwindcss]: https://www.npmjs.com/package/@poupe/tailwindcss
 [nuxt-content]: https://content.nuxt.com
 [nuxt-icon]: https://github.com/nuxt/icon
 [cf-workers]: https://developers.cloudflare.com/workers/

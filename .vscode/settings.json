@@ -1,6 +1,11 @@
 {
-  "cSpell.words": [
-    "apptly",
-    "Nuxt"
-  ]
+  "cSpell.import": [
+    "internal/build/cspell.json"
+  ],
+  // Suppress auto-forward of chrome-devtools-mcp port.
+  "remote.portsAttributes": {
+    "9236": {
+      "onAutoForward": "ignore"
+    }
+  }
 }

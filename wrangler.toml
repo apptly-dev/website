@@ -18,3 +18,10 @@ ip = "0.0.0.0"
 [assets]
 directory = ".output/public"
 binding = "ASSETS"
+
+# wrangler d1 create apptly-website-content
+[[d1_databases]]
+binding = "DB"
+database_name = "apptly-website-content"
+database_id = "827f6d7b-4b07-4986-ba61-2fd84a17717a"
+preview_database_id = "local"

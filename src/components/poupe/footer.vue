@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex items-center justify-between p-4">
+  <footer class="flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:justify-between">
     <div>
       <slot name="left" />
     </div>

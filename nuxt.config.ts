@@ -26,6 +26,9 @@ export default defineNuxtConfig({
       bindingName: 'DB',
     },
   },
+  dir: {
+    public: 'src/public',
+  },
   srcDir: 'src',
   serverDir: 'src/server',
 

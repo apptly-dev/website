@@ -9,6 +9,11 @@ useHead({
   bodyAttrs: {
     class: 'surface',
   },
+  link: [{
+    rel: 'icon',
+    type: 'image/svg+xml',
+    href: '/favicon.svg',
+  }],
   script: [{
     tagPosition: 'head',
     innerHTML: `(() => {

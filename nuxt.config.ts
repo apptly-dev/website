@@ -1,4 +1,9 @@
+import { fileURLToPath } from 'node:url';
+
 import tailwindcss from '@tailwindcss/vite';
+
+const fromHere = (path: string) =>
+  fileURLToPath(new URL(path, import.meta.url));
 
 // isProduction = false
 const isProduction = process.env.PRODUCTION === 'production';
@@ -35,8 +40,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-04-20',
   nitro: {
     preset: 'cloudflare-module',
+    serverAssets: [
+      { baseName: 'public', dir: fromHere('src/public') },
+    ],
     prerender: {
-      routes: ['/'],
+      routes: ['/', '/favicon.svg'],
       crawlLinks: true,
     },
   },

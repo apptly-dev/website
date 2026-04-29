@@ -101,11 +101,12 @@ entirely — neither touches the repo-root `.cache/`.
 
 ## Linting
 
-`pnpm lint` runs `eslint . --fix` followed by `cspell`.
-`pnpm lint:check` runs the non-fixing eslint plus `cspell`.
-`run-s` is sequential, so cspell only executes after eslint
-passes — a parse error will hide spelling issues until
-eslint is clean.
+`pnpm lint` runs `eslint . --fix`, then `nuxt typecheck`,
+then `cspell`. `pnpm lint:check` is the same pipeline with
+the non-fixing eslint. `run-s` is sequential, so each step
+only runs once the previous one passes — an eslint parse
+error or a type error will hide spelling issues until the
+earlier step is clean.
 
 The shared cspell config lives at `internal/build/cspell.json`:
 

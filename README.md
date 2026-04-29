@@ -38,7 +38,8 @@ Other useful scripts:
 - `pnpm build` — production build to `.output/` — Cloudflare
   Worker bundle plus pre-rendered static assets in
   `.output/public/` (routes from `nuxt.config.ts`)
-- `pnpm lint` / `pnpm lint:check` — ESLint with / without `--fix`
+- `pnpm lint` / `pnpm lint:check` — ESLint (with / without
+  `--fix`), `nuxt typecheck`, then cspell
 - `pnpm type-check` — type-check the project via
   `nuxt typecheck` (vue-tsc)
 - `pnpm check` — `lint:check` + `type-check` + `build`

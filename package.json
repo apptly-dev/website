@@ -10,19 +10,18 @@
     "dev": "nuxt cleanup && nuxt dev",
     "dev:prepare": "nuxt prepare",
     "generate": "nuxt generate",
-    "lint": "run-s lint:_fix cspell",
+    "lint": "run-s lint:_fix type-check cspell",
     "lint:_check": "eslint .",
     "lint:_fix": "eslint . --fix",
-    "lint:check": "run-s lint:_check cspell",
-    "precommit": "run-s generate lint",
+    "lint:check": "run-s lint:_check type-check cspell",
+    "precommit": "run-s dev:prepare lint build",
     "prepare": "nuxt prepare",
     "preview": "wrangler dev",
     "type-check": "nuxt typecheck"
   },
   "dependencies": {
     "nuxt": "^4.4.2",
-    "vue": "^3.5.32",
-    "vue-router": "^4.6.4"
+    "vue": "^3.5.32"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260418.1",

@@ -1,15 +1,27 @@
 <template>
   <article class="content-body mx-auto max-w-3xl px-6 py-10">
-    <content-renderer :value="data" />
+    <content-renderer
+      v-if="data"
+      :value="data"
+    />
   </article>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
 
-const { data } = await useAsyncData(route.path, () =>
+const { data, error } = await useAsyncData(route.path, () =>
   queryCollection('content').path(route.path).first(),
 );
+
+if (error.value) {
+  throw createError({
+    statusCode: 500,
+    statusMessage: 'Server Error',
+    cause: error.value,
+    fatal: true,
+  });
+}
 
 if (!data.value) {
   throw createError({

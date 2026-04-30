@@ -2,16 +2,7 @@
   <p-container>
     <p-main class="flex flex-1 justify-center">
       <div class="self-center text-center">
-        <img
-          src="~/assets/img/logo-light.svg"
-          alt="Apptly"
-          class="mx-auto mb-6 block w-64 dark:hidden"
-        >
-        <img
-          src="~/assets/img/logo-dark.svg"
-          alt="Apptly"
-          class="mx-auto mb-6 hidden w-64 dark:block"
-        >
+        <app-logo class="mx-auto mb-6 w-64" />
         Coming soon
       </div>
     </p-main>

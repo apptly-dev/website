@@ -20,8 +20,8 @@
     "type-check": "nuxt typecheck"
   },
   "dependencies": {
-    "nuxt": "^4.4.2",
-    "vue": "^3.5.32"
+    "nuxt": "^4.4.4",
+    "vue": "^3.5.33"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260418.1",

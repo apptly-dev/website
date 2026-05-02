@@ -6,6 +6,7 @@
     "**/.output/**",
     "**/.wrangler/**",
     "**/*.svg",
+    "**/eff_large_wordlist.txt",
     "**/node_modules/**",
     "**/pnpm-lock.yaml"
   ],
@@ -18,6 +19,7 @@
     "poupe",
     "taiclock",
     "unrs",
+    "vueuse",
     "workerd"
   ]
 }

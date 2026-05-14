@@ -5,17 +5,21 @@
     "**/.nuxt/**",
     "**/.output/**",
     "**/.wrangler/**",
+    "**/dist/**",
     "**/*.svg",
     "**/eff_large_wordlist.txt",
     "**/node_modules/**",
-    "**/pnpm-lock.yaml"
+    "**/pnpm-lock.yaml",
+    "**/worker-configuration.d.ts"
   ],
   "words": [
     "amery",
     "apptly",
     "iconify",
+    "kagal",
     "nuxt",
     "nuxtjs",
+    "obuild",
     "poupe",
     "taiclock",
     "unrs",

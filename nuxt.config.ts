@@ -41,6 +41,15 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-04-20',
   nitro: {
     preset: 'cloudflare-module',
+    cloudflare: {
+      // The dispatcher in apps/worker owns wrangler config. Without this,
+      // Nitro's cloudflare-module preset auto-enables deployConfig when it
+      // detects CF Workers Builds (provider === 'cloudflare_workers') and
+      // writes .wrangler/deploy/config.json at the repo root, which then
+      // collides with apps/worker/wrangler.toml ("Found both a user
+      // configuration file ... and a deploy configuration file ...").
+      deployConfig: false,
+    },
     serverAssets: [
       { baseName: 'public', dir: fromHere('src/public') },
     ],

@@ -95,18 +95,20 @@ entirely — neither touches the repo-root `.cache/`.
   and transient agent artefacts.
 - `.claude/` — local agent state.
 - `.env`, `.env.*` (except `.env.example`) — secrets.
-- `.wrangler/tmp`, `.wrangler/state/v3` — wrangler local
-  state.
+- `.wrangler/` — wrangler local state.
 - `.cache/` — includes the Chromium MCP user-data-dir.
 
 ## Linting
 
-`pnpm lint` runs `eslint . --fix`, then `nuxt typecheck`,
-then `cspell`. `pnpm lint:check` is the same pipeline with
-the non-fixing eslint. `run-s` is sequential, so each step
-only runs once the previous one passes — an eslint parse
-error or a type error will hide spelling issues until the
-earlier step is clean.
+`pnpm lint` runs `eslint . --fix` at the root (with
+`apps/**` excluded), then the combined typecheck
+(`nuxt typecheck` plus each workspace package's
+`type-check`), then `cspell`, then a recursive `pnpm -r
+lint` across workspace packages. `pnpm lint:check` is the
+same pipeline with the non-fixing eslint. `run-s` is
+sequential, so each step only runs once the previous one
+passes — an eslint parse error or a type error will hide
+spelling issues until the earlier step is clean.
 
 The shared cspell config lives at `internal/build/cspell.json`:
 

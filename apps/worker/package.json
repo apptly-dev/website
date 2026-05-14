@@ -1,0 +1,33 @@
+{
+  "name": "apptly-website-worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Apptly website Cloudflare Worker dispatcher",
+  "scripts": {
+    "build": "obuild",
+    "cf:deploy": "wrangler deploy",
+    "cf:preview": "wrangler versions upload",
+    "cf:typegen": "wrangler types",
+    "clean": "rimraf dist .wrangler node_modules worker-configuration.d.ts",
+    "dev": "wrangler dev",
+    "dev:prepare": "run-s dev:prepare:_stub cf:typegen",
+    "dev:prepare:_stub": "obuild --stub",
+    "lint": "eslint --fix .",
+    "lint:check": "eslint .",
+    "prepare": "cross-test -s dist/index.mjs || pnpm dev:prepare",
+    "type-check": "run-s type-check:main type-check:tools",
+    "type-check:main": "tsc --noEmit -p tsconfig.json",
+    "type-check:tools": "tsc --noEmit -p tsconfig.tools.json"
+  },
+  "devDependencies": {
+    "@kagal/cross-test": "~0.1.3",
+    "@poupe/eslint-config": "^0.9.1",
+    "eslint": "^9.39.4",
+    "npm-run-all2": "^8.0.4",
+    "obuild": "^0.4.34",
+    "rimraf": "^6.1.3",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.91.0"
+  }
+}

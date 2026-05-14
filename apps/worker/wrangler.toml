@@ -1,5 +1,5 @@
 name = "apptly-website"
-main = ".output/server/index.mjs"
+main = "dist/index.mjs"
 compatibility_date = "2026-04-20"
 compatibility_flags = ["nodejs_compat"]
 
@@ -9,14 +9,12 @@ workers_dev = true
 # Generate a unique preview URL for every deployment.
 preview_urls = true
 
-[build]
-command = "pnpm build"
-
 [dev]
 ip = "0.0.0.0"
+port = 8788
 
 [assets]
-directory = ".output/public"
+directory = "../../.output/public"
 binding = "ASSETS"
 
 # wrangler d1 create apptly-website-content

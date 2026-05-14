@@ -25,5 +25,5 @@ logs
 !.env.example
 
 # wrangler
-.wrangler/tmp
-.wrangler/state/v3
+.wrangler/
+worker-configuration.d.ts

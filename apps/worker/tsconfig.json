@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "types": []
+  },
+  "include": ["./**/*.ts", "./**/*.mts", "./worker-configuration.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}

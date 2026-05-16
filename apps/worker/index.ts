@@ -10,7 +10,7 @@
 
 import nitro from './nitro-entry.mjs';
 
-import { TAICLOCK_PATH, taiclockHandler } from './taiclock.ts';
+import { TAISTAMP_PATH, taistampHandler } from './taistamp.ts';
 
 export * from './nitro-entry.mjs';
 
@@ -23,8 +23,8 @@ if (!nitroFetch) {
 const handler: ExportedHandler<Env> = {
   ...nitroHandler,
   fetch(request, env, context) {
-    if (new URL(request.url).pathname === TAICLOCK_PATH) {
-      return taiclockHandler(request);
+    if (new URL(request.url).pathname === TAISTAMP_PATH) {
+      return taistampHandler(request, env);
     }
     return nitroFetch(request, env, context);
   },

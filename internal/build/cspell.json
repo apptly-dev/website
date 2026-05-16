@@ -21,8 +21,9 @@
     "nuxtjs",
     "obuild",
     "poupe",
-    "taiclock",
+    "taistamp",
     "unrs",
+    "vars",
     "vueuse",
     "workerd"
   ]

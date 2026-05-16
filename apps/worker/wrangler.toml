@@ -9,6 +9,14 @@ workers_dev = true
 # Generate a unique preview URL for every deployment.
 preview_urls = true
 
+# TAISTAMP_SECRET signs taistamp responses. Set once with
+# `wrangler secret put TAISTAMP_SECRET`; persists across
+# subsequent versions. `wrangler deploy` and `versions upload`
+# refuse to proceed unless the binding is configured on the
+# Worker.
+[secrets]
+required = ["TAISTAMP_SECRET"]
+
 [dev]
 ip = "0.0.0.0"
 port = 8788

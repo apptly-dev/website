@@ -9,6 +9,12 @@ workers_dev = true
 # Generate a unique preview URL for every deployment.
 preview_urls = true
 
+# TAISTAMP_SECRET signs taistamp responses. Bind as a
+# script-level secret via `wrangler secret put` or the
+# Workers Builds dashboard (secret-typed build variable);
+# once at script level it flows into every uploaded
+# version. Local dev reads it from .dev.vars.
+
 [build]
 command = "pnpm build"
 

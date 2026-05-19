@@ -22,7 +22,10 @@
     "type-check": "nuxt typecheck"
   },
   "dependencies": {
+    "@kagal/ed25519-secret": "^0.2.1",
+    "@kagal/taistamp": "^0.1.1",
     "@vueuse/core": "^14.3.0",
+    "h3": "^1.15.11",
     "nuxt": "^4.4.4",
     "vue": "^3.5.33"
   },
@@ -59,7 +62,7 @@
   },
   "engines": {
     "node": ">= 22",
-    "pnpm": ">= 10.33"
+    "pnpm": ">= 10.33.2"
   },
-  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
+  "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800"
 }

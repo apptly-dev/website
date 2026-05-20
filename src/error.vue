@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <p-container>
     <app-header />
-    <main class="mx-auto max-w-3xl px-6 py-20 text-center">
+    <main class="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-20 text-center">
       <h1 class="mb-4 text-6xl font-bold">
         {{ error.statusCode }}
       </h1>
@@ -17,7 +17,7 @@
       </button>
     </main>
     <app-footer />
-  </div>
+  </p-container>
 </template>
 
 <script setup lang="ts">

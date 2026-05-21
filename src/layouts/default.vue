@@ -1,9 +1,13 @@
 <template>
-  <div>
+  <p-container>
     <app-header />
     <p-main>
       <NuxtPage />
     </p-main>
+    <div
+      class="flex-1"
+      aria-hidden="true"
+    />
     <app-footer />
-  </div>
+  </p-container>
 </template>

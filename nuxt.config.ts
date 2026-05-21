@@ -52,7 +52,13 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: [
+        '@vueuse/core',
+      ],
+    },
   },
+
   telemetry: true,
   hooks: {
     'vite:extendConfig'(config) {

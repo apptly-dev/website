@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "cf:deploy": "wrangler deploy",
+    "cf:preview": "wrangler versions upload",
     "check": "run-s lint:check type-check build",
     "clean": "rimraf .output .nuxt node_modules",
     "cspell": "cspell --config internal/build/cspell.json \"**\"",

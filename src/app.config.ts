@@ -1,3 +1,1 @@
-export default defineAppConfig({
-  homeUrl: 'https://apptly.co',
-});
+export default defineAppConfig({});

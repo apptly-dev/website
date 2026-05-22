@@ -1,7 +1,7 @@
 <template>
   <p-header>
     <template #logo>
-      Apptly
+      <nuxt-link to="/">Apptly</nuxt-link>
     </template>
     <template #right>
       <p-color-mode-toggle />

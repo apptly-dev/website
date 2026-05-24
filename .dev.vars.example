@@ -1,0 +1,14 @@
+# Local dev secrets for `pnpm preview` (wrangler dev).
+# Copy to `.dev.vars` (gitignored).
+
+# Ed25519 signing key set for /.well-known/taistamp.
+# Optional — leave unset to serve unsigned TAI64N labels.
+#
+# Format: one or more `selector:base64-seed` entries,
+# whitespace- or punctuation-separated; the last entry signs
+# new responses. Selector matches
+# [A-Za-z]([A-Za-z0-9_-]{0,61}[A-Za-z0-9])?; seed is 32 bytes
+# of RFC 4648 §4 base64 (e.g. `openssl rand -base64 32`).
+#
+# To enable, uncomment and substitute a real seed:
+# TAISTAMP_SECRET=mykey:<base64-encoded 32 bytes>

@@ -19,6 +19,9 @@ logs
 .fleet
 .idea
 
+# Repo scratch (analysis dumps, draft prose, captured output)
+.tmp/
+
 # Local env files
 .env
 .env.*

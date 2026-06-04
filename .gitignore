@@ -19,10 +19,14 @@ logs
 .fleet
 .idea
 
+# Repo scratch (analysis dumps, draft prose, captured output)
+.tmp/
+
 # Local env files
 .env
 .env.*
 !.env.example
+.dev.vars
 
 # wrangler
 .wrangler/tmp

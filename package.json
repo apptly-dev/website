@@ -44,7 +44,7 @@
     "@poupe/tailwindcss": "^0.5.0",
     "@tailwindcss/vite": "^4.2.1",
     "@types/node": "^22.0.0",
-    "better-sqlite3": "^12.6.2",
+    "better-sqlite3": "^12.11.1",
     "cspell": "^10.0.0",
     "eslint": "^9.39.4",
     "npm-run-all2": "^8.0.4",

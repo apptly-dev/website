@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version: '22.23.2'
 
       - name: Run renovate-config-validator
         run: npx --yes --package renovate -- renovate-config-validator --strict
